@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 const Home = () => {
   const [isVisible, setIsVisible] = useState({});
   const [age, setAge] = useState(0);
-  const currentYear = new Date().getFullYear(); // Changed: removed setCurrentYear
 
   useEffect(() => {
     const birthDate = new Date(2006, 8, 24);
