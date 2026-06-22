@@ -34,29 +34,29 @@ const Profile = () => {
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="glass-card rounded-3xl p-6 md:p-8 border border-white/5">
-        <h1 className="text-3xl font-bold flex items-center gap-3 text-blue-200">
+    <div className="space-y-3 sm:space-y-5 md:space-y-8">
+      <div className="glass-card rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-5 md:p-8 border border-white/5">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold flex items-center gap-1.5 sm:gap-3 text-blue-200">
           <span>🌐</span> My Profiles
         </h1>
-        <p className="text-gray-400 mt-2">Connect with me on social media and professional platforms.</p>
+        <p className="text-gray-400 text-xs sm:text-sm md:text-base mt-1">Connect with me on social media and professional platforms.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5 md:gap-6">
         {socialLinks.map((link, index) => (
           <a 
             key={index}
             href={link.url} 
             target="_blank" 
             rel="noopener noreferrer"
-            className={`glass-card rounded-2xl p-6 border border-white/5 ${link.color} transition-all duration-300 hover:scale-[1.02] hover:bg-[#1a2332] group`}
+            className={`glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 ${link.color} transition-all duration-300 hover:scale-[1.02] hover:bg-[#1a2332] group`}
           >
-            <div className="flex items-center gap-4">
-              <span className="text-4xl">{link.icon}</span>
-              <div>
-                <h2 className="text-xl font-semibold text-white group-hover:text-blue-200 transition-colors">{link.platform}</h2>
-                <p className="text-gray-400 text-sm">{link.username}</p>
-                <span className="inline-flex items-center gap-1 text-xs text-blue-400 mt-1 opacity-70 group-hover:opacity-100">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <span className="text-2xl sm:text-3xl md:text-4xl">{link.icon}</span>
+              <div className="min-w-0 flex-1">
+                <h2 className="text-sm sm:text-base md:text-xl font-semibold text-white group-hover:text-blue-200 transition-colors break-words">{link.platform}</h2>
+                <p className="text-gray-400 text-xs sm:text-sm truncate">{link.username}</p>
+                <span className="inline-flex items-center gap-1 text-[0.55rem] sm:text-xs text-blue-400 mt-0.5 opacity-70 group-hover:opacity-100">
                   Visit Profile <span>→</span>
                 </span>
               </div>
@@ -65,13 +65,15 @@ const Profile = () => {
         ))}
       </div>
 
-      <div className="glass-card rounded-2xl p-6 border border-white/5 mt-4">
-        <h2 className="text-lg font-semibold flex items-center gap-2 text-purple-200"><span>📧</span> Direct Contact</h2>
-        <div className="mt-3 flex flex-wrap gap-4 text-sm">
-          <span className="flex items-center gap-2 bg-[#1f2a3a] px-4 py-2 rounded-full border border-[#2d3a4f]">
-            <span>✉️</span> blaisefam5242@gmail.com
+      <div className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 mt-2 sm:mt-4">
+        <h2 className="text-sm sm:text-base md:text-lg font-semibold flex items-center gap-1.5 sm:gap-2 text-purple-200">
+          <span>📧</span> Direct Contact
+        </h2>
+        <div className="mt-1.5 sm:mt-3 flex flex-wrap gap-1.5 sm:gap-3 text-xs sm:text-sm">
+          <span className="flex items-center gap-1 sm:gap-2 bg-[#1f2a3a] px-2 sm:px-4 py-1 sm:py-2 rounded-full border border-[#2d3a4f]">
+            <span>✉️</span> <span className="break-all">blaisefam5242@gmail.com</span>
           </span>
-          <span className="flex items-center gap-2 bg-[#1f2a3a] px-4 py-2 rounded-full border border-[#2d3a4f]">
+          <span className="flex items-center gap-1 sm:gap-2 bg-[#1f2a3a] px-2 sm:px-4 py-1 sm:py-2 rounded-full border border-[#2d3a4f]">
             <span>📞</span> (+250) 791642822
           </span>
         </div>

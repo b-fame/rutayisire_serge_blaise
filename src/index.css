@@ -86,3 +86,75 @@ body {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0b0e12; }
 ::-webkit-scrollbar-thumb { background: #2c3a50; border-radius: 10px; }
+
+
+
+/* Extra small screens (phones) */
+@layer utilities {
+  @screen xs {
+    .xs\:inline {
+      display: inline;
+    }
+  }
+}
+
+/* Custom responsive adjustments */
+@media (max-width: 360px) {
+  .skill-tag {
+    font-size: 0.5rem !important;
+    padding: 0.1rem 0.5rem !important;
+  }
+}
+
+
+
+/* Add these responsive utilities to your index.css */
+
+/* Extra small screens (phones) - custom breakpoint */
+@media (min-width: 480px) {
+  .xs\:inline {
+    display: inline;
+  }
+}
+
+/* Very small screens (under 360px) */
+@media (max-width: 360px) {
+  .skill-tag {
+    font-size: 0.45rem !important;
+    padding: 0.05rem 0.4rem !important;
+  }
+  
+  .glass-card {
+    padding: 0.5rem !important;
+  }
+}
+
+/* Tablets and small laptops */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .glass-card {
+    padding: 1rem !important;
+  }
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 640px) {
+  button, 
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  input, 
+  textarea,
+  select {
+    font-size: 16px !important; /* Prevent iOS zoom */
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
