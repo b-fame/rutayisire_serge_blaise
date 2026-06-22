@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState({});
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [age, setAge] = useState(0);
+  const currentYear = new Date().getFullYear(); // Changed: removed setCurrentYear
 
   useEffect(() => {
     const birthDate = new Date(2006, 8, 24);
@@ -47,6 +47,18 @@ const Home = () => {
     { name: 'MySQL', icon: '🐬' },
     { name: 'MongoDB', icon: '🍃' },
     { name: 'Android Studio', icon: '📱' },
+  ];
+
+  // AI & Prompt Engineering Skills
+  const aiSkills = [
+    { name: 'Prompt Engineering', icon: '🎯' },
+    { name: 'AI Integration', icon: '🤖' },
+    { name: 'LLM Optimization', icon: '⚡' },
+    { name: 'Context Management', icon: '🔄' },
+    { name: 'API Integration', icon: '🔗' },
+    { name: 'Response Engineering', icon: '📊' },
+    { name: 'Chatbot Development', icon: '💬' },
+    { name: 'AI Workflow Design', icon: '🧠' },
   ];
 
   const programmingLanguages = [
@@ -99,7 +111,7 @@ const Home = () => {
             </div>
             
             <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto md:mx-0 mb-4">
-              Software Engineering Student · Full-Stack Developer · Problem Solver
+              Software Engineering Student · Full-Stack Developer · AI Enthusiast
             </p>
             
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 text-sm">
@@ -130,12 +142,12 @@ const Home = () => {
             <div className="text-xs text-gray-500">Frameworks</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-green-300">3</div>
-            <div className="text-xs text-gray-500">Projects</div>
+            <div className="text-2xl font-bold text-green-300">{aiSkills.length}</div>
+            <div className="text-xs text-gray-500">AI Skills</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-yellow-300">{currentYear}</div>
-            <div className="text-xs text-gray-500">Current Year</div>
+            <div className="text-2xl font-bold text-yellow-300">3</div>
+            <div className="text-xs text-gray-500">Projects</div>
           </div>
         </div>
 
@@ -226,7 +238,7 @@ const Home = () => {
           transition: 'all 0.8s ease-out 0.4s'
         }}>
           <h2 className="text-2xl font-semibold flex items-center gap-3 mb-5 text-blue-200">
-            <span className="text-3xl">🛠️</span> Skills
+            <span className="text-3xl">🛠️</span> Technical Skills
           </h2>
           <div className="flex flex-wrap gap-2 mb-4">
             {skills.map((skill, index) => (
@@ -243,6 +255,48 @@ const Home = () => {
               <span className="flex items-center gap-2"><span>👥</span> Group management</span>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* AI & Prompt Engineering Skills Section */}
+      <div id="ai-skills" className="animate-section glass-card rounded-2xl p-6 border border-white/5 transition-all duration-500 hover:border-purple-500/20" style={{
+        opacity: isVisible['ai-skills'] ? 1 : 0,
+        transform: isVisible['ai-skills'] ? 'translateY(0)' : 'translateY(30px)',
+        transition: 'all 0.8s ease-out 0.5s'
+      }}>
+        <h2 className="text-2xl font-semibold flex items-center gap-3 mb-5 text-purple-200">
+          <span className="text-3xl">🤖</span> AI & Prompt Engineering
+          <span className="flex-1 h-px bg-gradient-to-r from-purple-500/30 to-transparent"></span>
+        </h2>
+        <div className="flex flex-wrap gap-2 mb-3">
+          {aiSkills.map((skill, index) => (
+            <span key={index} className="skill-tag hover:scale-105 hover:bg-purple-500/20 hover:border-purple-500/50 transition-all duration-300 cursor-default">
+              {skill.icon} {skill.name}
+            </span>
+          ))}
+        </div>
+        <div className="mt-3 p-3 bg-[#1a2332]/30 rounded-xl border border-purple-500/10">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-300">
+            <span className="flex items-center gap-2">
+              <span className="text-purple-400">🧠</span> LLM Optimization
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="text-purple-400">🔗</span> API Integration
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="text-purple-400">💬</span> Chatbot Development
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="text-purple-400">⚡</span> Prompt Design
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="text-purple-400">📊</span> Response Engineering
+            </span>
+          </div>
+        </div>
+        <div className="mt-2 text-xs text-gray-500 flex gap-4">
+          <span>🔥 Experienced with GPT, Claude, and other LLMs</span>
+          <span>📚 Building AI-powered applications</span>
         </div>
       </div>
 
