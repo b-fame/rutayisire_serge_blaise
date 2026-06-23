@@ -1,10 +1,11 @@
-// src/components/Navbar.js
+// src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   // Handle scroll effect
   useEffect(() => {
@@ -26,10 +27,10 @@ const Navbar = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isMenuOpen]);
 
-  // Close menu on route change
+  // Close menu on route change - FIXED: removed window.location.pathname from dependencies
   useEffect(() => {
     setIsMenuOpen(false);
-  }, [window.location.pathname]);
+  }, [location.pathname]); // Now properly using location from useLocation()
 
   const navLinks = [
     { to: '/', icon: '🏠', label: 'Home' },
