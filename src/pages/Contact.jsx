@@ -12,9 +12,14 @@ const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState({ type: '', message: '' });
 
-  const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-  const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+  // Your EmailJS Configuration from the screenshot
+  const EMAILJS_SERVICE_ID = 'service_w9cg69b';
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // You need to create a template
+  const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Find this in your EmailJS account
+
+  // WhatsApp Configuration
+  const WHATSAPP_PHONE = '250791642822';
+  const WHATSAPP_URL = `https://wa.me/${WHATSAPP_PHONE}`;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -69,55 +74,74 @@ const Contact = () => {
       label: 'Email', 
       value: 'blaisefam5242@gmail.com', 
       link: 'mailto:blaisefam5242@gmail.com',
-      color: 'hover:border-blue-400'
+      color: 'hover:border-blue-400',
+      textColor: 'text-blue-400'
     },
     { 
       icon: 'bi-telephone-fill', 
       label: 'Phone', 
       value: '+250 791 642 822', 
       link: 'tel:+250791642822',
-      color: 'hover:border-green-400'
+      color: 'hover:border-green-400',
+      textColor: 'text-green-400'
     },
     { 
       icon: 'bi-whatsapp', 
       label: 'WhatsApp', 
       value: '+250 791 642 822', 
-      link: 'https://wa.me/250791642822',
-      color: 'hover:border-green-500'
+      link: WHATSAPP_URL,
+      color: 'hover:border-green-500',
+      textColor: 'text-green-400'
     },
     { 
       icon: 'bi-geo-alt-fill', 
       label: 'Location', 
       value: 'Kigali, Rwanda', 
       link: null,
-      color: 'hover:border-red-400'
+      color: 'hover:border-red-400',
+      textColor: 'text-red-400'
     },
   ];
 
   const socialLinks = [
-    { icon: 'bi-linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/blaise-fame-759820418', color: 'hover:border-blue-400' },
-    { icon: 'bi-instagram', label: 'Instagram', url: 'https://www.instagram.com/__rutayisire/', color: 'hover:border-pink-500' },
-    { icon: 'bi-facebook', label: 'Facebook', url: 'https://www.facebook.com/rutayisire250', color: 'hover:border-blue-500' },
-    { icon: 'bi-github', label: 'GitHub', url: 'https://github.com/b-fame', color: 'hover:border-gray-400' },
-    { icon: 'bi-whatsapp', label: 'WhatsApp', url: 'https://wa.me/250791642822', color: 'hover:border-green-500' },
+    { icon: 'bi-linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/blaise-fame-759820418', color: 'hover:border-blue-400', textColor: 'text-blue-400' },
+    { icon: 'bi-instagram', label: 'Instagram', url: 'https://www.instagram.com/__rutayisire/', color: 'hover:border-pink-500', textColor: 'text-pink-400' },
+    { icon: 'bi-facebook', label: 'Facebook', url: 'https://www.facebook.com/rutayisire250', color: 'hover:border-blue-500', textColor: 'text-blue-500' },
+    { icon: 'bi-github', label: 'GitHub', url: 'https://github.com/b-fame', color: 'hover:border-gray-400', textColor: 'text-gray-400' },
+    { icon: 'bi-whatsapp', label: 'WhatsApp', url: WHATSAPP_URL, color: 'hover:border-green-500', textColor: 'text-green-400' },
   ];
 
-  // WhatsApp quick message templates
   const whatsappTemplates = [
-    { label: 'Hi, I\'d like to collaborate on a project', emoji: '💼' },
-    { label: 'I have a job opportunity for you', emoji: '💻' },
-    { label: 'I need help with a software project', emoji: '🛠️' },
-    { label: 'I\'d like to discuss a potential partnership', emoji: '🤝' },
+    { 
+      label: 'Hi, I\'d like to collaborate on a project', 
+      emoji: '💼',
+      message: 'Hi Serge Blaise, I found your portfolio and I\'d like to collaborate on a project with you.'
+    },
+    { 
+      label: 'I have a job opportunity', 
+      emoji: '💻',
+      message: 'Hi Serge Blaise, I came across your portfolio and I have a job opportunity that might interest you.'
+    },
+    { 
+      label: 'I need help with a software project', 
+      emoji: '🛠️',
+      message: 'Hi Serge Blaise, I need help with a software project. Can we discuss this further?'
+    },
+    { 
+      label: 'I\'d like to discuss a partnership', 
+      emoji: '🤝',
+      message: 'Hi Serge Blaise, I\'d like to discuss a potential partnership with you.'
+    },
   ];
 
   const openWhatsApp = (message = '') => {
-    const phone = '250791642822';
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
+    window.open(`${WHATSAPP_URL}?text=${encodedMessage}`, '_blank');
   };
 
   return (
     <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
+      {/* Header */}
       <div className="glass-card rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-5 md:p-8 border border-white/5">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold flex items-center gap-1.5 sm:gap-3 text-blue-200">
           <i className="bi bi-envelope-paper-fill"></i> Contact Me
@@ -136,11 +160,7 @@ const Contact = () => {
               rel={info.icon === 'bi-whatsapp' ? 'noopener noreferrer' : ''}
               className={`glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-5 border border-white/5 ${info.color} transition-all duration-300 text-center hover:scale-105 group`}
             >
-              <i className={`${info.icon} text-2xl sm:text-3xl md:text-4xl mb-1.5 sm:mb-2 ${
-                info.icon === 'bi-whatsapp' ? 'text-green-400' : 
-                info.icon === 'bi-envelope-fill' ? 'text-blue-400' : 
-                info.icon === 'bi-telephone-fill' ? 'text-green-400' : 'text-red-400'
-              } group-hover:scale-110 transition-transform`}></i>
+              <i className={`${info.icon} text-2xl sm:text-3xl md:text-4xl mb-1.5 sm:mb-2 ${info.textColor} group-hover:scale-110 transition-transform`}></i>
               <div className="text-gray-400 text-[0.5rem] sm:text-xs uppercase tracking-wider">{info.label}</div>
               <div className="text-white text-[0.5rem] sm:text-xs md:text-sm font-medium truncate mt-0.5">{info.value}</div>
               {info.icon === 'bi-whatsapp' && (
@@ -151,7 +171,7 @@ const Contact = () => {
             </a>
           ) : (
             <div key={index} className={`glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-5 border border-white/5 ${info.color} transition-all duration-300 text-center`}>
-              <i className={`${info.icon} text-2xl sm:text-3xl md:text-4xl mb-1.5 sm:mb-2 text-red-400`}></i>
+              <i className={`${info.icon} text-2xl sm:text-3xl md:text-4xl mb-1.5 sm:mb-2 ${info.textColor}`}></i>
               <div className="text-gray-400 text-[0.5rem] sm:text-xs uppercase tracking-wider">{info.label}</div>
               <div className="text-white text-[0.5rem] sm:text-xs md:text-sm font-medium truncate mt-0.5">{info.value}</div>
             </div>
@@ -175,7 +195,7 @@ const Contact = () => {
           {whatsappTemplates.map((template, index) => (
             <button
               key={index}
-              onClick={() => openWhatsApp(template.label)}
+              onClick={() => openWhatsApp(template.message)}
               className="bg-[#1a2332] hover:bg-[#2a3a4f] text-gray-300 hover:text-white px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[#2d3a4f] hover:border-green-500/50 transition-all duration-300 text-[0.5rem] sm:text-xs flex items-center gap-1 sm:gap-2 hover:scale-105"
             >
               <span>{template.emoji}</span>
@@ -185,13 +205,25 @@ const Contact = () => {
             </button>
           ))}
         </div>
-        <div className="mt-2 sm:mt-3 flex items-center gap-2 text-[0.45rem] sm:text-xs text-gray-500">
-          <i className="bi bi-info-circle"></i>
-          <span>Click any button to open WhatsApp with pre-filled message</span>
+        <div className="mt-2 sm:mt-3 flex flex-wrap items-center justify-between gap-2 text-[0.45rem] sm:text-xs text-gray-500">
+          <div className="flex items-center gap-2">
+            <i className="bi bi-info-circle"></i>
+            <span>Click any button to open WhatsApp with pre-filled message</span>
+          </div>
+          <a 
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-green-400 hover:text-green-300 font-medium hover:underline"
+          >
+            <i className="bi bi-box-arrow-up-right me-1"></i>Open WhatsApp
+          </a>
         </div>
       </div>
 
+      {/* Main Contact Form and Social Links */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
+        {/* Contact Form */}
         <div className="md:col-span-3 glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5">
           <h2 className="text-sm sm:text-base md:text-xl font-semibold text-white mb-2 sm:mb-4">
             <i className="bi bi-send-fill me-2"></i>Send a Message
@@ -289,10 +321,10 @@ const Contact = () => {
               <i className="bi bi-whatsapp text-green-400 me-1"></i>
               Or chat with me directly on WhatsApp: 
               <a 
-                href="https://wa.me/250791642822" 
+                href={WHATSAPP_URL}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-green-400 hover:text-green-300 ml-1 font-medium"
+                className="text-green-400 hover:text-green-300 ml-1 font-medium hover:underline"
               >
                 +250 791 642 822
               </a>
@@ -300,6 +332,7 @@ const Contact = () => {
           </div>
         </div>
 
+        {/* Social Links */}
         <div className="md:col-span-2 glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5">
           <h2 className="text-sm sm:text-base md:text-xl font-semibold text-white mb-2 sm:mb-4">
             <i className="bi bi-share-fill me-2"></i>Connect With Me
@@ -313,13 +346,7 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 className={`flex items-center gap-1.5 sm:gap-3 p-2 sm:p-3 rounded-xl bg-[#1a2332]/30 hover:bg-[#1a2332]/60 transition-all duration-300 border border-transparent ${social.color} group`}
               >
-                <i className={`${social.icon} text-lg sm:text-2xl ${
-                  social.icon === 'bi-whatsapp' ? 'text-green-400' : 
-                  social.icon === 'bi-linkedin' ? 'text-blue-400' :
-                  social.icon === 'bi-instagram' ? 'text-pink-400' :
-                  social.icon === 'bi-facebook' ? 'text-blue-500' :
-                  'text-gray-400'
-                }`}></i>
+                <i className={`${social.icon} text-lg sm:text-2xl ${social.textColor}`}></i>
                 <div className="flex-1 min-w-0">
                   <div className="text-white text-xs sm:text-sm group-hover:text-blue-300 transition-colors">{social.label}</div>
                   <div className="text-gray-500 text-[0.45rem] sm:text-xs truncate">{social.url.replace('https://', '').split('/')[0]}</div>
@@ -345,13 +372,15 @@ const Contact = () => {
                 </p>
                 <p className="text-[0.4rem] sm:text-[0.5rem] text-gray-500">Available on WhatsApp</p>
               </div>
-              <button
-                onClick={() => openWhatsApp('Hi Serge Blaise, I found your portfolio and would like to connect!')}
+              <a
+                href={`${WHATSAPP_URL}?text=${encodeURIComponent('Hi Serge Blaise, I found your portfolio and would like to connect!')}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[0.5rem] sm:text-xs font-medium transition-all duration-300 hover:scale-105 flex items-center gap-1"
               >
                 <i className="bi bi-whatsapp"></i>
                 <span>Chat Now</span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
