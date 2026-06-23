@@ -27,10 +27,10 @@ const Navbar = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isMenuOpen]);
 
-  // Close menu on route change - FIXED: removed window.location.pathname from dependencies
+  // Close menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
-  }, [location.pathname]); // Now properly using location from useLocation()
+  }, [location.pathname]);
 
   const navLinks = [
     { to: '/', icon: '🏠', label: 'Home' },
@@ -54,16 +54,16 @@ const Navbar = () => {
     }`}>
       <div className="max-w-5xl mx-auto px-3 sm:px-4">
         <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
-          {/* Logo */}
+          {/* Logo - Updated: Removed SB and used emoji + name */}
           <NavLink to="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm sm:text-base shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-all duration-300 group-hover:scale-110">
-              SB
-            </div>
+            <span className="text-xl sm:text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
+              🧑‍💻
+            </span>
             <span className="font-bold text-sm sm:text-base md:text-lg lg:text-xl bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 bg-clip-text text-transparent animate-gradient hidden xs:block">
-              Serge Blaise
+              BFAME
             </span>
             <span className="font-bold text-sm sm:text-base md:text-lg lg:text-xl bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 bg-clip-text text-transparent animate-gradient xs:hidden">
-              SB
+              BF
             </span>
           </NavLink>
 

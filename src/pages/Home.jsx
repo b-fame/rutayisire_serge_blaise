@@ -96,7 +96,7 @@ const Home = () => {
               />
               <span className="absolute bottom-1 right-1 sm:bottom-2 sm:right-2 w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 bg-green-400 border-2 border-[#0c0f14] rounded-full"></span>
             </div>
-            <p className="text-[0.4rem] sm:text-[0.55rem] md:text-[0.6rem] uppercase tracking-widest text-gray-500 mt-1 text-center">📸 Profile</p>
+            <p className="text-[0.4rem] sm:text-[0.55rem] md:text-[0.6rem] uppercase tracking-widest text-gray-500 mt-1 text-center">📸 Me</p>
           </div>
           
           <div className="flex-1 text-center md:text-left w-full">
