@@ -1,4 +1,4 @@
-// pages/Profile.js
+// pages/Profile.js - All Tailwind, no CSS imports
 import React from 'react';
 
 const Profile = () => {
@@ -34,15 +34,15 @@ const Profile = () => {
   ];
 
   return (
-    <div className="space-y-3 sm:space-y-5 md:space-y-8">
+    <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
       <div className="glass-card rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-5 md:p-8 border border-white/5">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold flex items-center gap-1.5 sm:gap-3 text-blue-200">
           <span>🌐</span> My Profiles
         </h1>
-        <p className="text-gray-400 text-xs sm:text-sm md:text-base mt-1">Connect with me on social media and professional platforms.</p>
+        <p className="text-gray-400 text-xs sm:text-sm md:text-base mt-1">Connect with me on social media.</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5 md:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
         {socialLinks.map((link, index) => (
           <a 
             key={index}
@@ -51,13 +51,13 @@ const Profile = () => {
             rel="noopener noreferrer"
             className={`glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 ${link.color} transition-all duration-300 hover:scale-[1.02] hover:bg-[#1a2332] group`}
           >
-            <div className="flex items-center gap-2 sm:gap-4">
+            <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
               <span className="text-2xl sm:text-3xl md:text-4xl">{link.icon}</span>
               <div className="min-w-0 flex-1">
                 <h2 className="text-sm sm:text-base md:text-xl font-semibold text-white group-hover:text-blue-200 transition-colors break-words">{link.platform}</h2>
                 <p className="text-gray-400 text-xs sm:text-sm truncate">{link.username}</p>
-                <span className="inline-flex items-center gap-1 text-[0.55rem] sm:text-xs text-blue-400 mt-0.5 opacity-70 group-hover:opacity-100">
-                  Visit Profile <span>→</span>
+                <span className="inline-flex items-center gap-1 text-[0.5rem] sm:text-xs text-blue-400 mt-0.5 opacity-70 group-hover:opacity-100">
+                  Visit <span>→</span>
                 </span>
               </div>
             </div>

@@ -1,4 +1,4 @@
-// pages/Home.js
+// pages/Home.js - All Tailwind, no CSS imports
 import React, { useState, useEffect } from 'react';
 
 const Home = () => {
@@ -73,9 +73,9 @@ const Home = () => {
   return (
     <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
       {/* Hero Section */}
-      <div className="glass-card rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-5 md:p-8 border border-white/5 relative overflow-hidden group">
-        <div className="absolute -top-20 sm:-top-24 -right-20 sm:-right-24 w-40 sm:w-64 h-40 sm:h-64 bg-blue-500/5 rounded-full blur-3xl group-hover:bg-blue-500/10 transition-all duration-1000"></div>
-        <div className="absolute -bottom-24 sm:-bottom-32 -left-24 sm:-left-32 w-48 sm:w-80 h-48 sm:h-80 bg-purple-500/5 rounded-full blur-3xl group-hover:bg-purple-500/10 transition-all duration-1000 delay-300"></div>
+      <div className="glass-card rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-5 md:p-8 border border-white/5 relative overflow-hidden">
+        <div className="absolute -top-20 sm:-top-24 -right-20 sm:-right-24 w-40 sm:w-64 h-40 sm:h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-24 sm:-bottom-32 -left-24 sm:-left-32 w-48 sm:w-80 h-48 sm:h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
         
         <div className="relative flex flex-col items-center md:flex-row md:items-start gap-3 sm:gap-5 md:gap-8">
           <div className="flex-shrink-0 animate-bounce-slow">
@@ -96,15 +96,15 @@ const Home = () => {
               />
               <span className="absolute bottom-1 right-1 sm:bottom-2 sm:right-2 w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 bg-green-400 border-2 border-[#0c0f14] rounded-full"></span>
             </div>
-            <p className="text-[0.4rem] sm:text-[0.55rem] md:text-[0.6rem] uppercase tracking-widest text-gray-500 mt-1 text-center hover:text-gray-400 transition-colors">📸 Profile</p>
+            <p className="text-[0.4rem] sm:text-[0.55rem] md:text-[0.6rem] uppercase tracking-widest text-gray-500 mt-1 text-center">📸 Profile</p>
           </div>
           
           <div className="flex-1 text-center md:text-left w-full">
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-1.5 sm:gap-3 mb-1">
-              <h1 className="text-base sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 bg-clip-text text-transparent tracking-tight animate-gradient leading-tight">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-1 sm:gap-3 mb-1">
+              <h1 className="text-sm sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl font-bold bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 bg-clip-text text-transparent tracking-tight animate-gradient leading-tight">
                 RUTAYISIRE SERGE BLAISE
               </h1>
-              <span className="text-[0.5rem] sm:text-xs bg-blue-500/20 text-blue-300 px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-blue-500/30 animate-pulse-slow">
+              <span className="text-[0.5rem] sm:text-xs bg-blue-500/20 text-blue-300 px-1.5 sm:px-3 py-0.5 rounded-full border border-blue-500/30 animate-pulse-slow">
                 🚀 Available
               </span>
             </div>
@@ -113,17 +113,17 @@ const Home = () => {
               Software Engineering Student · Full-Stack Developer · AI Enthusiast
             </p>
             
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-1 sm:gap-2 md:gap-3 text-[0.55rem] sm:text-xs md:text-sm">
-              <span className="flex items-center gap-0.5 sm:gap-1 bg-[#1a2332]/50 px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-[#2d3a4f]">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-1 sm:gap-2 md:gap-3 text-[0.5rem] sm:text-xs md:text-sm">
+              <span className="flex items-center gap-0.5 sm:gap-1 bg-[#1a2332]/50 px-1.5 sm:px-3 py-0.5 rounded-full border border-[#2d3a4f]">
                 <span>🇷🇼</span> Rwandan
               </span>
-              <span className="flex items-center gap-0.5 sm:gap-1 bg-[#1a2332]/50 px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-[#2d3a4f]">
-                <span>🎂</span> {age} years
+              <span className="flex items-center gap-0.5 sm:gap-1 bg-[#1a2332]/50 px-1.5 sm:px-3 py-0.5 rounded-full border border-[#2d3a4f]">
+                <span>🎂</span> {age}
               </span>
-              <span className="flex items-center gap-0.5 sm:gap-1 bg-[#1a2332]/50 px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-[#2d3a4f]">
+              <span className="flex items-center gap-0.5 sm:gap-1 bg-[#1a2332]/50 px-1.5 sm:px-3 py-0.5 rounded-full border border-[#2d3a4f]">
                 <span>📞</span> <span className="hidden xs:inline">(+250) </span>791642822
               </span>
-              <a href="mailto:blaisefam5242@gmail.com" className="flex items-center gap-0.5 sm:gap-1 bg-[#1a2332]/50 px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-[#2d3a4f] hover:border-blue-500/50 transition-all hover:text-blue-300">
+              <a href="mailto:blaisefam5242@gmail.com" className="flex items-center gap-0.5 sm:gap-1 bg-[#1a2332]/50 px-1.5 sm:px-3 py-0.5 rounded-full border border-[#2d3a4f] hover:border-blue-500/50 transition-all hover:text-blue-300">
                 <span>✉️</span> <span className="hidden xs:inline">Email</span>
               </a>
             </div>
@@ -134,37 +134,37 @@ const Home = () => {
         <div className="relative mt-3 sm:mt-5 md:mt-6 grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-3 md:gap-4 p-2 sm:p-4 bg-gradient-to-r from-blue-900/10 to-purple-900/10 rounded-xl sm:rounded-2xl border border-blue-500/10">
           <div className="text-center">
             <div className="text-sm sm:text-lg md:text-2xl font-bold text-blue-300">{programmingLanguages.length}</div>
-            <div className="text-[0.45rem] sm:text-xs text-gray-500">Languages</div>
+            <div className="text-[0.4rem] sm:text-xs text-gray-500">Languages</div>
           </div>
           <div className="text-center">
             <div className="text-sm sm:text-lg md:text-2xl font-bold text-purple-300">{frameworks.length}</div>
-            <div className="text-[0.45rem] sm:text-xs text-gray-500">Frameworks</div>
+            <div className="text-[0.4rem] sm:text-xs text-gray-500">Frameworks</div>
           </div>
           <div className="text-center">
             <div className="text-sm sm:text-lg md:text-2xl font-bold text-green-300">{aiSkills.length}</div>
-            <div className="text-[0.45rem] sm:text-xs text-gray-500">AI Skills</div>
+            <div className="text-[0.4rem] sm:text-xs text-gray-500">AI Skills</div>
           </div>
           <div className="text-center">
             <div className="text-sm sm:text-lg md:text-2xl font-bold text-yellow-300">3</div>
-            <div className="text-[0.45rem] sm:text-xs text-gray-500">Projects</div>
+            <div className="text-[0.4rem] sm:text-xs text-gray-500">Projects</div>
           </div>
         </div>
 
         {/* Certification */}
         <div className="relative mt-2 sm:mt-4 md:mt-5 p-1.5 sm:p-3 md:p-4 bg-blue-900/10 rounded-xl sm:rounded-2xl border border-blue-500/10">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-2 text-[0.55rem] sm:text-xs md:text-sm">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-2 text-[0.5rem] sm:text-xs md:text-sm">
             <span className="text-gray-400 flex items-center gap-1 sm:gap-2">
               <span className="text-sm sm:text-lg">📜</span>
               <span className="italic text-center sm:text-left">I certify that the information given is correct.</span>
             </span>
-            <span className="text-blue-300 font-mono text-[0.5rem] sm:text-xs bg-blue-500/10 px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-blue-500/20 text-center">
+            <span className="text-blue-300 font-mono text-[0.45rem] sm:text-xs bg-blue-500/10 px-1.5 sm:px-3 py-0.5 rounded-full border border-blue-500/20 text-center">
               RUTAYISIRE SERGE BLAISE
             </span>
           </div>
         </div>
       </div>
 
-      {/* Education Section */}
+      {/* Education */}
       <div id="education" className="animate-section glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 transition-all duration-500" style={{
         opacity: isVisible.education ? 1 : 0,
         transform: isVisible.education ? 'translateY(0)' : 'translateY(30px)',
@@ -185,17 +185,17 @@ const Home = () => {
               <span className="text-lg sm:text-2xl mt-0.5">{edu.icon}</span>
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap items-center gap-1 sm:gap-3">
-                  <span className="font-medium text-white text-xs sm:text-sm md:text-base">{edu.year}</span>
-                  <span className="text-blue-300 text-xs sm:text-sm md:text-base break-words">{edu.school}</span>
+                  <span className="font-medium text-white text-[0.6rem] sm:text-sm md:text-base">{edu.year}</span>
+                  <span className="text-blue-300 text-[0.6rem] sm:text-sm md:text-base break-words">{edu.school}</span>
                 </div>
-                <p className="text-gray-400 text-[0.6rem] sm:text-xs md:text-sm mt-0.5">{edu.program}</p>
+                <p className="text-gray-400 text-[0.55rem] sm:text-xs md:text-sm mt-0.5">{edu.program}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Languages and Skills Grid */}
+      {/* Languages & Skills Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5 md:gap-6">
         <div id="languages" className="animate-section glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 transition-all duration-500" style={{
           opacity: isVisible.languages ? 1 : 0,
@@ -216,10 +216,10 @@ const Home = () => {
                   <span className="text-lg sm:text-2xl">{item.flag}</span>
                   <span className="font-medium text-white flex-1 text-xs sm:text-sm md:text-base">{item.lang}</span>
                 </div>
-                <div className="grid grid-cols-4 gap-0.5 sm:gap-2 text-[0.5rem] sm:text-xs">
+                <div className="grid grid-cols-4 gap-0.5 sm:gap-2 text-[0.45rem] sm:text-xs">
                   {['Read', 'Speak', 'Write', 'Understand'].map((label, i) => (
                     <div key={i} className="text-center">
-                      <div className="text-gray-500 mb-0.5 text-[0.45rem] sm:text-xs">{label}</div>
+                      <div className="text-gray-500 mb-0.5 text-[0.4rem] sm:text-xs">{label}</div>
                       <span className="lang-score hover:scale-110 transition-transform cursor-default text-xs sm:text-sm">
                         {item.scores[i]}
                       </span>
@@ -241,23 +241,23 @@ const Home = () => {
           </h2>
           <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-4">
             {skills.map((skill, index) => (
-              <span key={index} className="skill-tag text-[0.5rem] sm:text-xs hover:scale-105 hover:bg-blue-500/20 hover:border-blue-500/50 transition-all duration-300 cursor-default">
+              <span key={index} className="skill-tag text-[0.45rem] sm:text-xs hover:scale-105 hover:bg-blue-500/20 hover:border-blue-500/50 transition-all duration-300 cursor-default">
                 {skill.icon} {skill.name}
               </span>
             ))}
           </div>
           <div className="mt-2 sm:mt-4 p-1.5 sm:p-3 rounded-xl bg-[#1a2332]/30">
-            <div className="flex flex-wrap gap-1.5 sm:gap-3 text-[0.6rem] sm:text-sm">
+            <div className="flex flex-wrap gap-1 sm:gap-3 text-[0.55rem] sm:text-sm">
               <span className="flex items-center gap-0.5 sm:gap-2"><span>🤝</span> Team working</span>
               <span className="flex items-center gap-0.5 sm:gap-2"><span>💬</span> Communication</span>
-              <span className="flex items-center gap-0.5 sm:gap-2"><span>⏳</span> Time mgmt</span>
-              <span className="flex items-center gap-0.5 sm:gap-2"><span>👥</span> Group mgmt</span>
+              <span className="flex items-center gap-0.5 sm:gap-2"><span>⏳</span> Time management</span>
+              <span className="flex items-center gap-0.5 sm:gap-2"><span>👥</span> Group management</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* AI Skills Section */}
+      {/* AI Skills */}
       <div id="ai-skills" className="animate-section glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 transition-all duration-500 hover:border-purple-500/20" style={{
         opacity: isVisible['ai-skills'] ? 1 : 0,
         transform: isVisible['ai-skills'] ? 'translateY(0)' : 'translateY(30px)',
@@ -269,21 +269,21 @@ const Home = () => {
         </h2>
         <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3">
           {aiSkills.map((skill, index) => (
-            <span key={index} className="skill-tag text-[0.5rem] sm:text-xs hover:scale-105 hover:bg-purple-500/20 hover:border-purple-500/50 transition-all duration-300 cursor-default">
+            <span key={index} className="skill-tag text-[0.45rem] sm:text-xs hover:scale-105 hover:bg-purple-500/20 hover:border-purple-500/50 transition-all duration-300 cursor-default">
               {skill.icon} {skill.name}
             </span>
           ))}
         </div>
         <div className="mt-1.5 sm:mt-3 p-1.5 sm:p-3 bg-[#1a2332]/30 rounded-xl border border-purple-500/10">
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-3 md:gap-4 text-[0.6rem] sm:text-xs md:text-sm text-gray-300">
-            <span className="flex items-center gap-0.5 sm:gap-2"><span className="text-purple-400">🧠</span> LLM Optimization</span>
-            <span className="flex items-center gap-0.5 sm:gap-2"><span className="text-purple-400">🔗</span> API Integration</span>
-            <span className="flex items-center gap-0.5 sm:gap-2"><span className="text-purple-400">💬</span> Chatbots</span>
-            <span className="flex items-center gap-0.5 sm:gap-2"><span className="text-purple-400">⚡</span> Prompt Design</span>
-            <span className="flex items-center gap-0.5 sm:gap-2"><span className="text-purple-400">📊</span> Response Eng.</span>
+          <div className="flex flex-wrap items-center gap-1 sm:gap-2 md:gap-3 text-[0.55rem] sm:text-xs md:text-sm text-gray-300">
+            <span className="flex items-center gap-0.5 sm:gap-1"><span className="text-purple-400">🧠</span> LLM Optimization</span>
+            <span className="flex items-center gap-0.5 sm:gap-1"><span className="text-purple-400">🔗</span> API Integration</span>
+            <span className="flex items-center gap-0.5 sm:gap-1"><span className="text-purple-400">💬</span> Chatbots</span>
+            <span className="flex items-center gap-0.5 sm:gap-1"><span className="text-purple-400">⚡</span> Prompt Design</span>
+            <span className="flex items-center gap-0.5 sm:gap-1"><span className="text-purple-400">📊</span> Response Eng.</span>
           </div>
         </div>
-        <div className="mt-1 sm:mt-2 text-[0.45rem] sm:text-xs text-gray-500 flex flex-wrap gap-1.5 sm:gap-4">
+        <div className="mt-1 sm:mt-2 text-[0.4rem] sm:text-xs text-gray-500 flex flex-wrap gap-1 sm:gap-3">
           <span>🔥 Experienced with GPT, Claude, and other LLMs</span>
           <span>📚 Building AI-powered applications</span>
         </div>
@@ -314,7 +314,7 @@ const Home = () => {
                 'PHP': '🐘'
               };
               return (
-                <span key={index} className="skill-tag text-[0.5rem] sm:text-xs hover:scale-105 hover:bg-purple-500/20 hover:border-purple-500/50 transition-all duration-300 cursor-default">
+                <span key={index} className="skill-tag text-[0.45rem] sm:text-xs hover:scale-105 hover:bg-purple-500/20 hover:border-purple-500/50 transition-all duration-300 cursor-default">
                   {icons[lang] && <span className="mr-0.5">{icons[lang]}</span>}
                   {lang}
                 </span>
@@ -345,7 +345,7 @@ const Home = () => {
                 'Next.js': '▲'
               };
               return (
-                <span key={index} className="skill-tag text-[0.5rem] sm:text-xs hover:scale-105 hover:bg-purple-500/20 hover:border-purple-500/50 transition-all duration-300 cursor-default">
+                <span key={index} className="skill-tag text-[0.45rem] sm:text-xs hover:scale-105 hover:bg-purple-500/20 hover:border-purple-500/50 transition-all duration-300 cursor-default">
                   {icons[framework] && <span className="mr-0.5">{icons[framework]}</span>}
                   {framework}
                 </span>
@@ -373,8 +373,8 @@ const Home = () => {
               <div className="font-medium text-white flex items-center gap-1 sm:gap-2 text-xs sm:text-sm md:text-base">
                 <span className="text-blue-400">{index + 1}.</span> {ref.name}
               </div>
-              <div className="text-[0.55rem] sm:text-xs md:text-sm text-gray-400 break-words">{ref.institution} · {ref.role}</div>
-              <div className="text-[0.5rem] sm:text-xs text-blue-300 mt-0.5 flex items-center gap-0.5 sm:gap-1">
+              <div className="text-[0.5rem] sm:text-xs md:text-sm text-gray-400 break-words">{ref.institution} · {ref.role}</div>
+              <div className="text-[0.45rem] sm:text-xs text-blue-300 mt-0.5 flex items-center gap-0.5 sm:gap-1">
                 <span>📞</span> {ref.phone}
               </div>
             </div>

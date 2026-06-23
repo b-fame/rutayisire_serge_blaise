@@ -1,4 +1,4 @@
-// pages/Contact.js
+// pages/Contact.js - All Tailwind, no CSS imports
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 
@@ -78,31 +78,31 @@ const Contact = () => {
   ];
 
   return (
-    <div className="space-y-3 sm:space-y-5 md:space-y-8">
+    <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
       <div className="glass-card rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-5 md:p-8 border border-white/5">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold flex items-center gap-1.5 sm:gap-3 text-blue-200">
           <span>📬</span> Contact Me
         </h1>
-        <p className="text-gray-400 text-xs sm:text-sm md:text-base mt-1">I'm always open to new opportunities and collaborations. Let's connect!</p>
+        <p className="text-gray-400 text-xs sm:text-sm md:text-base mt-1">I'm always open to new opportunities. Let's connect!</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-6">
         {contactInfo.map((info, index) => (
           <div key={index} className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 hover:border-blue-500/20 transition-all duration-300 text-center">
             <div className="text-2xl sm:text-3xl md:text-4xl mb-1.5 sm:mb-3">{info.icon}</div>
-            <div className="text-gray-400 text-[0.55rem] sm:text-xs uppercase tracking-wider">{info.label}</div>
+            <div className="text-gray-400 text-[0.5rem] sm:text-xs uppercase tracking-wider">{info.label}</div>
             {info.link ? (
-              <a href={info.link} className="text-blue-300 hover:text-blue-100 transition-colors text-[0.65rem] sm:text-sm font-medium break-all">
+              <a href={info.link} className="text-blue-300 hover:text-blue-100 transition-colors text-[0.6rem] sm:text-sm font-medium break-all">
                 {info.value}
               </a>
             ) : (
-              <div className="text-white text-[0.65rem] sm:text-sm font-medium">{info.value}</div>
+              <div className="text-white text-[0.6rem] sm:text-sm font-medium">{info.value}</div>
             )}
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-3 sm:gap-5 md:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
         <div className="md:col-span-3 glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5">
           <h2 className="text-sm sm:text-base md:text-xl font-semibold text-white mb-2 sm:mb-4">✉️ Send a Message</h2>
           
@@ -118,7 +118,7 @@ const Contact = () => {
 
           <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-4">
             <div>
-              <label className="text-gray-400 text-[0.6rem] sm:text-sm block mb-0.5 sm:mb-1">Your Name *</label>
+              <label className="text-gray-400 text-[0.55rem] sm:text-sm block mb-0.5 sm:mb-1">Your Name *</label>
               <input
                 type="text"
                 name="user_name"
@@ -131,7 +131,7 @@ const Contact = () => {
               />
             </div>
             <div>
-              <label className="text-gray-400 text-[0.6rem] sm:text-sm block mb-0.5 sm:mb-1">Email Address *</label>
+              <label className="text-gray-400 text-[0.55rem] sm:text-sm block mb-0.5 sm:mb-1">Email *</label>
               <input
                 type="email"
                 name="user_email"
@@ -144,7 +144,7 @@ const Contact = () => {
               />
             </div>
             <div>
-              <label className="text-gray-400 text-[0.6rem] sm:text-sm block mb-0.5 sm:mb-1">Subject *</label>
+              <label className="text-gray-400 text-[0.55rem] sm:text-sm block mb-0.5 sm:mb-1">Subject *</label>
               <input
                 type="text"
                 name="subject"
@@ -157,7 +157,7 @@ const Contact = () => {
               />
             </div>
             <div>
-              <label className="text-gray-400 text-[0.6rem] sm:text-sm block mb-0.5 sm:mb-1">Message *</label>
+              <label className="text-gray-400 text-[0.55rem] sm:text-sm block mb-0.5 sm:mb-1">Message *</label>
               <textarea
                 name="message"
                 value={formData.message}
@@ -166,7 +166,7 @@ const Contact = () => {
                 disabled={isLoading}
                 rows="4"
                 className="w-full bg-[#1a2332] border border-[#2d3a4f] rounded-xl px-2.5 sm:px-4 py-2 sm:py-3 text-white text-xs sm:text-sm focus:outline-none focus:border-blue-500 transition-colors resize-none disabled:opacity-50"
-                placeholder="Tell me about your project or opportunity..."
+                placeholder="Tell me about your project..."
               ></textarea>
             </div>
             <button
@@ -203,7 +203,7 @@ const Contact = () => {
                 <span className="text-lg sm:text-2xl">{social.icon}</span>
                 <div className="flex-1 min-w-0">
                   <div className="text-white text-xs sm:text-sm group-hover:text-blue-300 transition-colors">{social.label}</div>
-                  <div className="text-gray-500 text-[0.5rem] sm:text-xs truncate">{social.url.replace('https://', '').split('/')[0]}</div>
+                  <div className="text-gray-500 text-[0.45rem] sm:text-xs truncate">{social.url.replace('https://', '').split('/')[0]}</div>
                 </div>
                 <span className="text-gray-500 group-hover:text-blue-300 transition-colors text-xs sm:text-base">→</span>
               </a>
@@ -211,9 +211,8 @@ const Contact = () => {
           </div>
 
           <div className="mt-3 sm:mt-6 p-2 sm:p-3 bg-blue-900/10 rounded-xl border border-blue-500/10">
-            <p className="text-[0.55rem] sm:text-xs text-gray-400 text-center">
-              📌 All messages are sent directly to my email. 
-              <br className="block sm:hidden" />I'll respond within 24 hours.
+            <p className="text-[0.5rem] sm:text-xs text-gray-400 text-center">
+              📌 All messages are sent directly to my email. I'll respond within 24 hours.
             </p>
           </div>
         </div>
