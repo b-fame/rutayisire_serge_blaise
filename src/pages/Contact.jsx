@@ -12,10 +12,10 @@ const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState({ type: '', message: '' });
 
-  // Your EmailJS Configuration from the screenshot
+  // Your EmailJS Configuration - ALL SET!
   const EMAILJS_SERVICE_ID = 'service_w9cg69b';
-  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // You need to create a template
-  const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Find this in your EmailJS account
+  const EMAILJS_TEMPLATE_ID = 'template_8a0byb7';
+  const EMAILJS_PUBLIC_KEY = 'jGmljkfU6OM3_9k6X';
 
   // WhatsApp Configuration
   const WHATSAPP_PHONE = '250791642822';
