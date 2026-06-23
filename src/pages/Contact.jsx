@@ -1,4 +1,4 @@
-// pages/Contact.js - All Tailwind, no CSS imports
+// pages/Contact.js
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 
@@ -12,7 +12,6 @@ const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState({ type: '', message: '' });
 
-  // Replace these with your EmailJS credentials
   const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
   const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
   const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
@@ -65,23 +64,23 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: '📧', label: 'Email', value: 'blaisefam5242@gmail.com', link: 'mailto:blaisefam5242@gmail.com' },
-    { icon: '📞', label: 'Phone', value: '+250 791 642 822', link: 'tel:+250791642822' },
-    { icon: '📍', label: 'Location', value: 'Kigali, Rwanda', link: null },
+    { icon: 'bi-envelope-fill', label: 'Email', value: 'blaisefam5242@gmail.com', link: 'mailto:blaisefam5242@gmail.com' },
+    { icon: 'bi-telephone-fill', label: 'Phone', value: '+250 791 642 822', link: 'tel:+250791642822' },
+    { icon: 'bi-geo-alt-fill', label: 'Location', value: 'Kigali, Rwanda', link: null },
   ];
 
   const socialLinks = [
-    { icon: '💼', label: 'LinkedIn', url: 'https://www.linkedin.com/in/blaise-fame-759820418' },
-    { icon: '📸', label: 'Instagram', url: 'https://www.instagram.com/__rutayisire/' },
-    { icon: '📘', label: 'Facebook', url: 'https://www.facebook.com/rutayisire250' },
-    { icon: '🐙', label: 'GitHub', url: 'https://github.com/b-fame' },
+    { icon: 'bi-linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/blaise-fame-759820418' },
+    { icon: 'bi-instagram', label: 'Instagram', url: 'https://www.instagram.com/__rutayisire/' },
+    { icon: 'bi-facebook', label: 'Facebook', url: 'https://www.facebook.com/rutayisire250' },
+    { icon: 'bi-github', label: 'GitHub', url: 'https://github.com/b-fame' },
   ];
 
   return (
     <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
       <div className="glass-card rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-5 md:p-8 border border-white/5">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold flex items-center gap-1.5 sm:gap-3 text-blue-200">
-          <span>📬</span> Contact Me
+          <i className="bi bi-envelope-paper-fill"></i> Contact Me
         </h1>
         <p className="text-gray-400 text-xs sm:text-sm md:text-base mt-1">I'm always open to new opportunities. Let's connect!</p>
       </div>
@@ -89,7 +88,7 @@ const Contact = () => {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-6">
         {contactInfo.map((info, index) => (
           <div key={index} className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 hover:border-blue-500/20 transition-all duration-300 text-center">
-            <div className="text-2xl sm:text-3xl md:text-4xl mb-1.5 sm:mb-3">{info.icon}</div>
+            <i className={`${info.icon} text-2xl sm:text-3xl md:text-4xl mb-1.5 sm:mb-3 text-blue-400`}></i>
             <div className="text-gray-400 text-[0.5rem] sm:text-xs uppercase tracking-wider">{info.label}</div>
             {info.link ? (
               <a href={info.link} className="text-blue-300 hover:text-blue-100 transition-colors text-[0.6rem] sm:text-sm font-medium break-all">
@@ -104,7 +103,9 @@ const Contact = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
         <div className="md:col-span-3 glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5">
-          <h2 className="text-sm sm:text-base md:text-xl font-semibold text-white mb-2 sm:mb-4">✉️ Send a Message</h2>
+          <h2 className="text-sm sm:text-base md:text-xl font-semibold text-white mb-2 sm:mb-4">
+            <i className="bi bi-send-fill me-2"></i>Send a Message
+          </h2>
           
           {status.message && (
             <div className={`p-2 sm:p-4 rounded-xl text-center mb-2 sm:mb-4 text-xs sm:text-sm ${
@@ -118,7 +119,9 @@ const Contact = () => {
 
           <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-4">
             <div>
-              <label className="text-gray-400 text-[0.55rem] sm:text-sm block mb-0.5 sm:mb-1">Your Name *</label>
+              <label className="text-gray-400 text-[0.55rem] sm:text-sm block mb-0.5 sm:mb-1">
+                <i className="bi bi-person-fill me-1"></i>Your Name *
+              </label>
               <input
                 type="text"
                 name="user_name"
@@ -131,7 +134,9 @@ const Contact = () => {
               />
             </div>
             <div>
-              <label className="text-gray-400 text-[0.55rem] sm:text-sm block mb-0.5 sm:mb-1">Email *</label>
+              <label className="text-gray-400 text-[0.55rem] sm:text-sm block mb-0.5 sm:mb-1">
+                <i className="bi bi-envelope-fill me-1"></i>Email *
+              </label>
               <input
                 type="email"
                 name="user_email"
@@ -144,7 +149,9 @@ const Contact = () => {
               />
             </div>
             <div>
-              <label className="text-gray-400 text-[0.55rem] sm:text-sm block mb-0.5 sm:mb-1">Subject *</label>
+              <label className="text-gray-400 text-[0.55rem] sm:text-sm block mb-0.5 sm:mb-1">
+                <i className="bi bi-tag-fill me-1"></i>Subject *
+              </label>
               <input
                 type="text"
                 name="subject"
@@ -157,7 +164,9 @@ const Contact = () => {
               />
             </div>
             <div>
-              <label className="text-gray-400 text-[0.55rem] sm:text-sm block mb-0.5 sm:mb-1">Message *</label>
+              <label className="text-gray-400 text-[0.55rem] sm:text-sm block mb-0.5 sm:mb-1">
+                <i className="bi bi-chat-text-fill me-1"></i>Message *
+              </label>
               <textarea
                 name="message"
                 value={formData.message}
@@ -176,21 +185,20 @@ const Contact = () => {
             >
               {isLoading ? (
                 <span className="flex items-center justify-center gap-2">
-                  <svg className="animate-spin h-4 w-4 sm:h-5 sm:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
+                  <span className="animate-spin inline-block w-4 h-4 sm:w-5 sm:h-5 border-2 border-white border-t-transparent rounded-full"></span>
                   Sending...
                 </span>
               ) : (
-                'Send Message 🚀'
+                <span><i className="bi bi-send-fill me-2"></i>Send Message</span>
               )}
             </button>
           </form>
         </div>
 
         <div className="md:col-span-2 glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5">
-          <h2 className="text-sm sm:text-base md:text-xl font-semibold text-white mb-2 sm:mb-4">🌐 Connect With Me</h2>
+          <h2 className="text-sm sm:text-base md:text-xl font-semibold text-white mb-2 sm:mb-4">
+            <i className="bi bi-share-fill me-2"></i>Connect With Me
+          </h2>
           <div className="space-y-1.5 sm:space-y-3">
             {socialLinks.map((social, index) => (
               <a
@@ -200,19 +208,19 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 sm:gap-3 p-2 sm:p-3 rounded-xl bg-[#1a2332]/30 hover:bg-[#1a2332]/60 transition-all duration-300 border border-transparent hover:border-blue-500/20 group"
               >
-                <span className="text-lg sm:text-2xl">{social.icon}</span>
+                <i className={`${social.icon} text-lg sm:text-2xl text-blue-400`}></i>
                 <div className="flex-1 min-w-0">
                   <div className="text-white text-xs sm:text-sm group-hover:text-blue-300 transition-colors">{social.label}</div>
                   <div className="text-gray-500 text-[0.45rem] sm:text-xs truncate">{social.url.replace('https://', '').split('/')[0]}</div>
                 </div>
-                <span className="text-gray-500 group-hover:text-blue-300 transition-colors text-xs sm:text-base">→</span>
+                <i className="bi bi-arrow-right text-gray-500 group-hover:text-blue-300 transition-colors text-xs sm:text-base"></i>
               </a>
             ))}
           </div>
 
           <div className="mt-3 sm:mt-6 p-2 sm:p-3 bg-blue-900/10 rounded-xl border border-blue-500/10">
             <p className="text-[0.5rem] sm:text-xs text-gray-400 text-center">
-              📌 All messages are sent directly to my email. I'll respond within 24 hours.
+              <i className="bi bi-pin me-1"></i>All messages are sent directly to my email. I'll respond within 24 hours.
             </p>
           </div>
         </div>

@@ -7,7 +7,6 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -16,7 +15,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (isMenuOpen && !e.target.closest('nav')) {
@@ -27,23 +25,22 @@ const Navbar = () => {
     return () => document.removeEventListener('click', handleClickOutside);
   }, [isMenuOpen]);
 
-  // Close menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
   const navLinks = [
-    { to: '/', icon: '🏠', label: 'Home' },
-    { to: '/about', icon: '👤', label: 'About' },
-    { to: '/projects', icon: '📁', label: 'Projects' },
-    { to: '/profile', icon: '🌐', label: 'Profiles' },
-    { to: '/contact', icon: '📬', label: 'Contact' },
+    { to: '/', icon: 'bi-house-fill', label: 'Home' },
+    { to: '/about', icon: 'bi-person-fill', label: 'About' },
+    { to: '/projects', icon: 'bi-folder-fill', label: 'Projects' },
+    { to: '/profile', icon: 'bi-globe2', label: 'Profiles' },
+    { to: '/contact', icon: 'bi-envelope-fill', label: 'Contact' },
   ];
 
   const socialLinks = [
-    { icon: '🐙', url: 'https://github.com/b-fame', label: 'GitHub' },
-    { icon: '💼', url: 'https://www.linkedin.com/in/blaise-fame-759820418', label: 'LinkedIn' },
-    { icon: '📸', url: 'https://www.instagram.com/__rutayisire/', label: 'Instagram' },
+    { icon: 'bi-github', url: 'https://github.com/b-fame', label: 'GitHub' },
+    { icon: 'bi-linkedin', url: 'https://www.linkedin.com/in/blaise-fame-759820418', label: 'LinkedIn' },
+    { icon: 'bi-instagram', url: 'https://www.instagram.com/__rutayisire/', label: 'Instagram' },
   ];
 
   return (
@@ -54,7 +51,6 @@ const Navbar = () => {
     }`}>
       <div className="max-w-5xl mx-auto px-3 sm:px-4">
         <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
-          {/* Logo - Updated: Removed SB and used emoji + name */}
           <NavLink to="/" className="flex items-center gap-2 group">
             <span className="text-xl sm:text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
               🧑‍💻
@@ -67,7 +63,6 @@ const Navbar = () => {
             </span>
           </NavLink>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1 lg:gap-2">
             {navLinks.map((link) => (
               <NavLink
@@ -82,7 +77,7 @@ const Navbar = () => {
                 `}
               >
                 <span className="flex items-center gap-2">
-                  <span className="text-base lg:text-lg">{link.icon}</span>
+                  <i className={`${link.icon} text-base lg:text-lg`}></i>
                   <span>{link.label}</span>
                 </span>
                 {({ isActive }) => isActive && (
@@ -92,7 +87,6 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Mobile Hamburger Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden relative w-10 h-10 rounded-lg flex items-center justify-center hover:bg-[#1f2a3a]/50 transition-all duration-300 group"
@@ -112,7 +106,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation Menu */}
         <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
           isMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
         }`}>
@@ -130,7 +123,7 @@ const Navbar = () => {
                   }
                 `}
               >
-                <span className="text-xl">{link.icon}</span>
+                <i className={`${link.icon} text-xl`}></i>
                 <span>{link.label}</span>
                 {({ isActive }) => isActive && (
                   <span className="ml-auto w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400"></span>
@@ -138,7 +131,6 @@ const Navbar = () => {
               </NavLink>
             ))}
             
-            {/* Mobile Social Links */}
             <div className="pt-3 mt-3 border-t border-[#253141]/30 px-4">
               <p className="text-[0.6rem] uppercase tracking-wider text-gray-600 mb-2">Connect</p>
               <div className="flex gap-3">
@@ -151,7 +143,7 @@ const Navbar = () => {
                     className="w-8 h-8 rounded-full bg-[#1f2a3a] flex items-center justify-center hover:bg-blue-500/20 transition-all duration-300 text-gray-400 hover:text-white"
                     aria-label={social.label}
                   >
-                    <span className="text-sm">{social.icon}</span>
+                    <i className={`${social.icon} text-sm`}></i>
                   </a>
                 ))}
               </div>

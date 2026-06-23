@@ -1,30 +1,30 @@
-// pages/Projects.js - All Tailwind, no CSS imports
+// pages/Projects.js
 import React from 'react';
 
 const Projects = () => {
   const projects = [
     {
-      title: 'Car Wash Bay Payments 🚗',
+      title: 'Car Wash Bay Payments',
       description: 'Full-stack application for managing car wash bay operations with payment processing and report generation.',
       github: 'https://github.com/b-fame/car-wash-bay-payements',
       tech: ['React', 'Node.js', 'Express', 'MySQL', 'Tailwind CSS'],
-      status: '✅ Public',
+      status: 'Public',
       statusColor: 'bg-green-900/40 text-green-300 border-green-700/50'
     },
     {
-      title: 'Ride Nation 🚗',
+      title: 'Ride Nation',
       description: 'A ride-hailing platform connecting drivers and passengers with seamless ride booking and tracking.',
       github: 'https://github.com/b-fame/ride-nation',
       tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],
-      status: '🔒 Private',
+      status: 'Private',
       statusColor: 'bg-yellow-900/40 text-yellow-300 border-yellow-700/50'
     },
     {
-      title: 'School Management System 🏫',
+      title: 'School Management System',
       description: 'Full-stack web application for managing school departments, books, projects, and committees.',
       github: 'https://github.com/b-fame/school-management-system-in-react-node-js-and-express-js',
       tech: ['React', 'Node.js', 'Express', 'MySQL', 'REST API'],
-      status: '✅ Public',
+      status: 'Public',
       statusColor: 'bg-green-900/40 text-green-300 border-green-700/50'
     }
   ];
@@ -33,7 +33,7 @@ const Projects = () => {
     <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
       <div className="glass-card rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-5 md:p-8 border border-white/5">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold flex items-center gap-1.5 sm:gap-3 text-blue-200">
-          <span>📁</span> My Projects
+          <i className="bi bi-folder-fill"></i> My Projects
         </h1>
         <p className="text-gray-400 text-xs sm:text-sm md:text-base mt-1">Here are some of the projects I've worked on.</p>
       </div>
@@ -42,8 +42,12 @@ const Projects = () => {
         {projects.map((project, index) => (
           <div key={index} className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 hover:border-blue-500/30 transition-all duration-300 flex flex-col">
             <div className="flex flex-wrap items-start justify-between gap-1 sm:gap-2">
-              <h2 className="text-sm sm:text-base md:text-xl font-semibold text-white">{project.title}</h2>
+              <h2 className="text-sm sm:text-base md:text-xl font-semibold text-white flex items-center gap-2">
+                <i className="bi bi-code-square text-blue-400"></i>
+                {project.title}
+              </h2>
               <span className={`text-[0.45rem] sm:text-xs px-1.5 sm:px-3 py-0.5 rounded-full ${project.statusColor} whitespace-nowrap`}>
+                <i className={`bi bi-${project.status === 'Public' ? 'check-circle-fill' : 'lock-fill'} me-1`}></i>
                 {project.status}
               </span>
             </div>
@@ -52,7 +56,9 @@ const Projects = () => {
             </p>
             <div className="mt-2 sm:mt-4 flex flex-wrap gap-1 sm:gap-2">
               {project.tech.map((tech, i) => (
-                <span key={i} className="skill-tag text-[0.4rem] sm:text-xs">{tech}</span>
+                <span key={i} className="skill-tag text-[0.4rem] sm:text-xs">
+                  <i className="bi bi-tag me-0.5"></i>{tech}
+                </span>
               ))}
             </div>
             <a 
@@ -61,7 +67,7 @@ const Projects = () => {
               rel="noopener noreferrer"
               className="mt-3 sm:mt-5 inline-flex items-center gap-1 sm:gap-2 text-blue-300 hover:text-blue-100 transition-colors text-[0.55rem] sm:text-sm font-medium bg-[#1f2a3a] px-2.5 sm:px-4 py-1 sm:py-2 rounded-full w-fit border border-[#2d3a4f] hover:border-blue-400"
             >
-              <span>🔗</span> View on GitHub
+              <i className="bi bi-github"></i> View on GitHub
             </a>
           </div>
         ))}
@@ -69,7 +75,7 @@ const Projects = () => {
 
       <div className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 mt-2 sm:mt-4">
         <h2 className="text-sm sm:text-base md:text-lg font-semibold flex items-center gap-1.5 sm:gap-2 text-purple-200">
-          <span>💡</span> More Coming Soon
+          <i className="bi bi-lightbulb-fill"></i> More Coming Soon
         </h2>
         <p className="text-gray-400 text-xs sm:text-sm mt-0.5 sm:mt-1">I'm constantly working on new projects.</p>
       </div>
