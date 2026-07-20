@@ -1,153 +1,151 @@
-// src/components/Navbar.jsx
-import React, { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import portfolio from '../data/portfolio';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (isMenuOpen && !e.target.closest('nav')) {
-        setIsMenuOpen(false);
-      }
-    };
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location.pathname]);
-
-  const navLinks = [
-    { to: '/', icon: 'bi-house-fill', label: 'Home' },
-    { to: '/about', icon: 'bi-person-fill', label: 'About' },
-    { to: '/projects', icon: 'bi-folder-fill', label: 'Projects' },
-    { to: '/profile', icon: 'bi-globe2', label: 'Profiles' },
-    { to: '/contact', icon: 'bi-envelope-fill', label: 'Contact' },
-  ];
-
-  const socialLinks = [
-    { icon: 'bi-github', url: 'https://github.com/b-fame', label: 'GitHub' },
-    { icon: 'bi-linkedin', url: 'https://www.linkedin.com/in/blaise-fame-759820418', label: 'LinkedIn' },
-    { icon: 'bi-instagram', url: 'https://www.instagram.com/__rutayisire/', label: 'Instagram' },
-  ];
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
 
   return (
-    <nav className={`sticky top-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-[#0c0f14]/95 backdrop-blur-xl border-b border-[#253141]/80 shadow-2xl shadow-black/50' 
-        : 'bg-[#141b24]/80 backdrop-blur-md border-b border-[#253141]'
-    }`}>
-      <div className="max-w-5xl mx-auto px-3 sm:px-4">
-        <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
-          <NavLink to="/" className="flex items-center gap-2 group">
-            <span className="text-xl sm:text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
-              🧑‍💻
-            </span>
-            <span className="font-bold text-sm sm:text-base md:text-lg lg:text-xl bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 bg-clip-text text-transparent animate-gradient hidden xs:block">
-              BFAME
-            </span>
-            <span className="font-bold text-sm sm:text-base md:text-lg lg:text-xl bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 bg-clip-text text-transparent animate-gradient xs:hidden">
-              BF
-            </span>
-          </NavLink>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-gray-900/90 backdrop-blur-xl border-b border-gray-700/50 shadow-lg shadow-black/20'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <NavLink to="/" className="flex items-center gap-2.5">
+          <img
+            src="/images/profile.jpg"
+            alt="BFAME"
+            className="h-9 w-9 rounded-full object-cover ring-2 ring-blue-500/40 transition-all duration-300 hover:ring-blue-400 hover:scale-110"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="40" height="40" rx="20" fill="%233b82f6"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="16" font-weight="bold" font-family="Inter,sans-serif">B</text></svg>');
+            }}
+          />
+          <span className="text-lg font-extrabold tracking-tight">
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent dark:text-transparent">BFAME</span>
+          </span>
+        </NavLink>
 
-          <div className="hidden md:flex items-center gap-1 lg:gap-2">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                className={({ isActive }) => `
-                  relative px-3 lg:px-4 py-2 rounded-full transition-all duration-300 text-sm lg:text-base font-medium
-                  ${isActive 
-                    ? 'text-white bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 shadow-lg shadow-blue-500/10' 
-                    : 'text-gray-400 hover:text-white hover:bg-[#1f2a3a]/50'
-                  }
-                `}
-              >
-                <span className="flex items-center gap-2">
-                  <i className={`${link.icon} text-base lg:text-lg`}></i>
-                  <span>{link.label}</span>
-                </span>
-                {({ isActive }) => isActive && (
-                  <span className="absolute -bottom-0.5 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full"></span>
-                )}
-              </NavLink>
-            ))}
+        <div className="hidden items-center gap-1 md:flex">
+          {portfolio.navLinks.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.to === '/'}
+              className={({ isActive }) =>
+                `flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200 ${
+                  isActive
+                    ? 'bg-blue-500/10 text-blue-400 shadow-[inset_0_-2px_0_0_rgba(59,130,246,0.5)]'
+                    : 'text-gray-400 hover:text-gray-200 hover:bg-white/5'
+                }`
+              }
+            >
+              <i className={`bi ${link.icon} text-xs`} />
+              {link.label}
+            </NavLink>
+          ))}
+          <div className="ml-2">
+            <ThemeToggle />
           </div>
-
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden relative w-10 h-10 rounded-lg flex items-center justify-center hover:bg-[#1f2a3a]/50 transition-all duration-300 group"
-            aria-label="Toggle menu"
-          >
-            <div className="w-6 h-5 flex flex-col justify-between items-center">
-              <span className={`block w-6 h-0.5 bg-gray-400 rounded-full transition-all duration-300 ${
-                isMenuOpen ? 'rotate-45 translate-y-2' : ''
-              }`}></span>
-              <span className={`block w-6 h-0.5 bg-gray-400 rounded-full transition-all duration-300 ${
-                isMenuOpen ? 'opacity-0' : ''
-              }`}></span>
-              <span className={`block w-6 h-0.5 bg-gray-400 rounded-full transition-all duration-300 ${
-                isMenuOpen ? '-rotate-45 -translate-y-2' : ''
-              }`}></span>
-            </div>
-          </button>
         </div>
 
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
-        }`}>
-          <div className="py-3 space-y-1 border-t border-[#253141]/50">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                onClick={() => setIsMenuOpen(false)}
-                className={({ isActive }) => `
-                  flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 text-sm font-medium
-                  ${isActive 
-                    ? 'text-white bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 shadow-lg shadow-blue-500/5' 
-                    : 'text-gray-400 hover:text-white hover:bg-[#1f2a3a]/50'
-                  }
-                `}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="relative z-50 flex h-10 w-10 items-center justify-center rounded-lg border border-gray-600 bg-gray-800/80 text-gray-400 transition-all duration-200 hover:text-white md:hidden"
+          aria-label="Toggle menu"
+        >
+          <div className="flex flex-col gap-1.5">
+            <span
+              className={`block h-0.5 w-5 rounded bg-current transition-all duration-300 ${
+                mobileOpen ? 'translate-y-2 rotate-45' : ''
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-5 rounded bg-current transition-all duration-300 ${
+                mobileOpen ? 'opacity-0' : ''
+              }`}
+            />
+            <span
+              className={`block h-0.5 w-5 rounded bg-current transition-all duration-300 ${
+                mobileOpen ? '-translate-y-2 -rotate-45' : ''
+              }`}
+            />
+          </div>
+        </button>
+      </div>
+
+      <div
+        className={`fixed inset-0 top-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
+          mobileOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+        onClick={() => setMobileOpen(false)}
+      />
+
+      <div
+        className={`fixed top-0 right-0 h-full w-72 bg-gray-900/95 backdrop-blur-xl border-l border-gray-700/50 transition-transform duration-300 ease-in-out md:hidden ${
+          mobileOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex flex-col gap-2 p-6 pt-20">
+          {portfolio.navLinks.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.to === '/'}
+              onClick={() => setMobileOpen(false)}
+              className={({ isActive }) =>
+                `flex items-center gap-3 rounded-xl px-4 py-3 text-base font-medium transition-all duration-200 ${
+                  isActive
+                    ? 'bg-blue-500/10 text-blue-400'
+                    : 'text-gray-400 hover:text-gray-200 hover:bg-white/5'
+                }`
+              }
+            >
+              <i className={`bi ${link.icon} text-lg`} />
+              {link.label}
+            </NavLink>
+          ))}
+
+          <div className="my-4 border-t border-gray-700/50" />
+
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-gray-500">Theme</span>
+            <ThemeToggle />
+          </div>
+
+          <div className="mt-4 flex gap-3">
+            {portfolio.social.map((s) => (
+              <a
+                key={s.platform}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.platform}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-gray-600 bg-gray-800/50 text-gray-400 transition-all duration-200 hover:border-blue-500 hover:text-blue-400"
               >
-                <i className={`${link.icon} text-xl`}></i>
-                <span>{link.label}</span>
-                {({ isActive }) => isActive && (
-                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-purple-400"></span>
-                )}
-              </NavLink>
+                <i className={`bi ${s.icon}`} />
+              </a>
             ))}
-            
-            <div className="pt-3 mt-3 border-t border-[#253141]/30 px-4">
-              <p className="text-[0.6rem] uppercase tracking-wider text-gray-600 mb-2">Connect</p>
-              <div className="flex gap-3">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-[#1f2a3a] flex items-center justify-center hover:bg-blue-500/20 transition-all duration-300 text-gray-400 hover:text-white"
-                    aria-label={social.label}
-                  >
-                    <i className={`${social.icon} text-sm`}></i>
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </div>

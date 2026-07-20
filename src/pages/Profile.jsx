@@ -1,83 +1,100 @@
-// pages/Profile.js
-import React from 'react';
+import portfolio from '../data/portfolio';
+import SectionReveal from '../components/SectionReveal';
+
+const platformColors = {
+  GitHub: { border: 'hover:border-gray-400', text: 'text-gray-300' },
+  LinkedIn: { border: 'hover:border-blue-500', text: 'text-blue-400' },
+  Instagram: { border: 'hover:border-pink-500', text: 'text-pink-400' },
+  Facebook: { border: 'hover:border-blue-400', text: 'text-blue-400' },
+};
 
 const Profile = () => {
-  const socialLinks = [
-    {
-      platform: 'LinkedIn',
-      username: 'Blaise Fame',
-      url: 'https://www.linkedin.com/in/blaise-fame-759820418',
-      icon: 'bi-linkedin',
-      color: 'hover:border-blue-400'
-    },
-    {
-      platform: 'Instagram',
-      username: '@__rutayisire',
-      url: 'https://www.instagram.com/__rutayisire/',
-      icon: 'bi-instagram',
-      color: 'hover:border-pink-500'
-    },
-    {
-      platform: 'Facebook',
-      username: 'rutayisire250',
-      url: 'https://www.facebook.com/rutayisire250',
-      icon: 'bi-facebook',
-      color: 'hover:border-blue-500'
-    },
-    {
-      platform: 'GitHub',
-      username: 'b-fame',
-      url: 'https://github.com/b-fame',
-      icon: 'bi-github',
-      color: 'hover:border-gray-400'
-    }
-  ];
+  const githubProfile = portfolio.social.find((s) => s.platform === 'GitHub');
 
   return (
-    <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
-      <div className="glass-card rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-5 md:p-8 border border-white/5">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold flex items-center gap-1.5 sm:gap-3 text-blue-200">
-          <i className="bi bi-globe2"></i> My Profiles
-        </h1>
-        <p className="text-gray-400 text-xs sm:text-sm md:text-base mt-1">Connect with me on social media.</p>
-      </div>
+    <div className="space-y-6 lg:space-y-8">
+      <SectionReveal>
+        <section className="rounded-2xl border border-white/10 bg-gray-800/80 p-6 backdrop-blur-xl sm:p-8">
+          <h1 className="flex items-center gap-3 text-3xl font-bold text-white">
+            <i className="bi bi-globe2 text-blue-400" /> My Profiles
+          </h1>
+          <p className="mt-2 text-gray-400">Find me across the web.</p>
+        </section>
+      </SectionReveal>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
-        {socialLinks.map((link, index) => (
-          <a 
-            key={index}
-            href={link.url} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className={`glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 ${link.color} transition-all duration-300 hover:scale-[1.02] hover:bg-[#1a2332] group`}
-          >
-            <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
-              <i className={`${link.icon} text-2xl sm:text-3xl md:text-4xl text-blue-400`}></i>
-              <div className="min-w-0 flex-1">
-                <h2 className="text-sm sm:text-base md:text-xl font-semibold text-white group-hover:text-blue-200 transition-colors break-words">{link.platform}</h2>
-                <p className="text-gray-400 text-xs sm:text-sm truncate">{link.username}</p>
-                <span className="inline-flex items-center gap-1 text-[0.5rem] sm:text-xs text-blue-400 mt-0.5 opacity-70 group-hover:opacity-100">
-                  Visit <i className="bi bi-arrow-right"></i>
+      <SectionReveal delay={100}>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {portfolio.social.map((profile, i) => {
+            const colors = platformColors[profile.platform] || platformColors.GitHub;
+            return (
+              <a
+                key={i}
+                href={profile.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group flex items-center gap-5 rounded-2xl border border-white/10 bg-gray-800/80 p-6 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] ${colors.border}`}
+              >
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gray-700/50 text-2xl transition-colors group-hover:bg-gray-700">
+                  <i className={`bi ${profile.icon} ${colors.text}`} />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-white">{profile.platform}</h3>
+                  <p className="text-sm text-gray-400">{profile.username}</p>
+                </div>
+                <span className="text-sm text-gray-500 transition-colors group-hover:text-blue-400">
+                  Visit <i className="bi bi-arrow-right" />
                 </span>
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-
-      <div className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 mt-2 sm:mt-4">
-        <h2 className="text-sm sm:text-base md:text-lg font-semibold flex items-center gap-1.5 sm:gap-2 text-purple-200">
-          <i className="bi bi-envelope-fill"></i> Direct Contact
-        </h2>
-        <div className="mt-1.5 sm:mt-3 flex flex-wrap gap-1.5 sm:gap-3 text-xs sm:text-sm">
-          <span className="flex items-center gap-1 sm:gap-2 bg-[#1f2a3a] px-2 sm:px-4 py-1 sm:py-2 rounded-full border border-[#2d3a4f]">
-            <i className="bi bi-envelope-fill"></i> <span className="break-all">blaisefam5242@gmail.com</span>
-          </span>
-          <span className="flex items-center gap-1 sm:gap-2 bg-[#1f2a3a] px-2 sm:px-4 py-1 sm:py-2 rounded-full border border-[#2d3a4f]">
-            <i className="bi bi-telephone-fill"></i> (+250) 791642822
-          </span>
+              </a>
+            );
+          })}
         </div>
-      </div>
+      </SectionReveal>
+
+      <SectionReveal delay={200}>
+        <div className="rounded-2xl border border-white/10 bg-gray-800/80 p-6 backdrop-blur-xl sm:p-8">
+          <h2 className="mb-4 text-xl font-bold text-white">Direct Contact Info</h2>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={`mailto:${portfolio.personal.email}`}
+              className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-5 py-2.5 text-sm text-blue-400 transition-all duration-200 hover:bg-blue-500/20"
+            >
+              <i className="bi bi-envelope-fill" /> {portfolio.personal.email}
+            </a>
+            <a
+              href={`tel:${portfolio.personal.phone}`}
+              className="inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-5 py-2.5 text-sm text-green-400 transition-all duration-200 hover:bg-green-500/20"
+            >
+              <i className="bi bi-telephone-fill" /> {portfolio.personal.phone}
+            </a>
+          </div>
+        </div>
+      </SectionReveal>
+
+      {githubProfile && (
+        <SectionReveal delay={100}>
+          <div className="rounded-2xl border border-white/10 bg-gray-800/80 p-6 backdrop-blur-xl sm:p-8">
+            <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-4">
+                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gray-700/50 text-2xl text-gray-300">
+                  <i className="bi bi-github" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold text-white">GitHub Profile</h2>
+                  <p className="text-sm text-gray-400">github.com/{githubProfile.username}</p>
+                </div>
+              </div>
+              <a
+                href={githubProfile.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-gray-700 to-gray-600 px-6 py-3 font-medium text-white transition-all duration-200 hover:brightness-110"
+              >
+                <i className="bi bi-box-arrow-up-right" /> View my repositories
+              </a>
+            </div>
+          </div>
+        </SectionReveal>
+      )}
     </div>
   );
 };

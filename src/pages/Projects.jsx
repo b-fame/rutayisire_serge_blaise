@@ -1,84 +1,79 @@
-// pages/Projects.js
-import React from 'react';
+import { useState } from 'react';
+import portfolio from '../data/portfolio';
+import SectionReveal from '../components/SectionReveal';
+import ProjectCard from '../components/ProjectCard';
+
+const filters = ['All', 'React', 'Node.js', 'Full Stack'];
 
 const Projects = () => {
-  const projects = [
-    {
-      title: 'Car Wash Bay Payments',
-      description: 'Full-stack application for managing car wash bay operations with payment processing and report generation.',
-      github: 'https://github.com/b-fame/car-wash-bay-payements',
-      tech: ['React', 'Node.js', 'Express', 'MySQL', 'Tailwind CSS'],
-      status: 'Public',
-      statusColor: 'bg-green-900/40 text-green-300 border-green-700/50'
-    },
-    {
-      title: 'Ride Nation',
-      description: 'A ride-hailing platform connecting drivers and passengers with seamless ride booking and tracking.',
-      github: 'https://github.com/b-fame/ride-nation',
-      tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],
-      status: 'Private',
-      statusColor: 'bg-yellow-900/40 text-yellow-300 border-yellow-700/50'
-    },
-    {
-      title: 'School Management System',
-      description: 'Full-stack web application for managing school departments, books, projects, and committees.',
-      github: 'https://github.com/b-fame/school-management-system-in-react-node-js-and-express-js',
-      tech: ['React', 'Node.js', 'Express', 'MySQL', 'REST API'],
-      status: 'Public',
-      statusColor: 'bg-green-900/40 text-green-300 border-green-700/50'
-    }
-  ];
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  const filtered = portfolio.projects.filter((project) => {
+    if (activeFilter === 'All') return true;
+    const techLower = project.tech.map((t) => t.toLowerCase());
+    const filter = activeFilter.toLowerCase();
+    if (filter === 'react') return techLower.some((t) => t.includes('react'));
+    if (filter === 'node.js') return techLower.some((t) => t.includes('node') || t.includes('express'));
+    if (filter === 'full stack') return techLower.length >= 3;
+    return true;
+  });
 
   return (
-    <div className="space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8">
-      <div className="glass-card rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-5 md:p-8 border border-white/5">
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold flex items-center gap-1.5 sm:gap-3 text-blue-200">
-          <i className="bi bi-folder-fill"></i> My Projects
-        </h1>
-        <p className="text-gray-400 text-xs sm:text-sm md:text-base mt-1">Here are some of the projects I've worked on.</p>
-      </div>
+    <div className="space-y-6 lg:space-y-8">
+      <SectionReveal>
+        <section className="rounded-2xl border border-white/10 bg-gray-800/80 p-6 backdrop-blur-xl sm:p-8">
+          <h1 className="flex items-center gap-3 text-3xl font-bold text-white">
+            <i className="bi bi-folder-fill text-blue-400" /> My Projects
+          </h1>
+          <p className="mt-2 text-gray-400">
+            A collection of projects I've built with passion and purpose.
+          </p>
+        </section>
+      </SectionReveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
-        {projects.map((project, index) => (
-          <div key={index} className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 hover:border-blue-500/30 transition-all duration-300 flex flex-col">
-            <div className="flex flex-wrap items-start justify-between gap-1 sm:gap-2">
-              <h2 className="text-sm sm:text-base md:text-xl font-semibold text-white flex items-center gap-2">
-                <i className="bi bi-code-square text-blue-400"></i>
-                {project.title}
-              </h2>
-              <span className={`text-[0.45rem] sm:text-xs px-1.5 sm:px-3 py-0.5 rounded-full ${project.statusColor} whitespace-nowrap`}>
-                <i className={`bi bi-${project.status === 'Public' ? 'check-circle-fill' : 'lock-fill'} me-1`}></i>
-                {project.status}
-              </span>
-            </div>
-            <p className="text-gray-300 text-[0.6rem] sm:text-xs md:text-sm mt-1.5 sm:mt-3 flex-1 leading-relaxed">
-              {project.description}
-            </p>
-            <div className="mt-2 sm:mt-4 flex flex-wrap gap-1 sm:gap-2">
-              {project.tech.map((tech, i) => (
-                <span key={i} className="skill-tag text-[0.4rem] sm:text-xs">
-                  <i className="bi bi-tag me-0.5"></i>{tech}
-                </span>
-              ))}
-            </div>
-            <a 
-              href={project.github} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="mt-3 sm:mt-5 inline-flex items-center gap-1 sm:gap-2 text-blue-300 hover:text-blue-100 transition-colors text-[0.55rem] sm:text-sm font-medium bg-[#1f2a3a] px-2.5 sm:px-4 py-1 sm:py-2 rounded-full w-fit border border-[#2d3a4f] hover:border-blue-400"
+      <SectionReveal delay={100}>
+        <div className="flex flex-wrap gap-2">
+          {filters.map((filter) => (
+            <button
+              key={filter}
+              onClick={() => setActiveFilter(filter)}
+              className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 ${
+                activeFilter === filter
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+                  : 'border border-gray-600 bg-gray-800/80 text-gray-300 hover:border-blue-500 hover:text-blue-400'
+              }`}
             >
-              <i className="bi bi-github"></i> View on GitHub
-            </a>
-          </div>
-        ))}
-      </div>
+              {filter}
+            </button>
+          ))}
+        </div>
+      </SectionReveal>
 
-      <div className="glass-card rounded-xl sm:rounded-2xl p-3 sm:p-5 md:p-6 border border-white/5 mt-2 sm:mt-4">
-        <h2 className="text-sm sm:text-base md:text-lg font-semibold flex items-center gap-1.5 sm:gap-2 text-purple-200">
-          <i className="bi bi-lightbulb-fill"></i> More Coming Soon
-        </h2>
-        <p className="text-gray-400 text-xs sm:text-sm mt-0.5 sm:mt-1">I'm constantly working on new projects.</p>
-      </div>
+      <SectionReveal delay={200}>
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {filtered.length > 0 ? (
+            filtered.map((project, i) => (
+              <ProjectCard key={i} project={project} />
+            ))
+          ) : (
+            <div className="col-span-full rounded-2xl border border-dashed border-gray-600 bg-gray-800/40 p-12 text-center">
+              <i className="bi bi-search text-4xl text-gray-500" />
+              <p className="mt-3 text-lg font-semibold text-gray-400">No projects found</p>
+              <p className="text-sm text-gray-500">Try selecting a different filter.</p>
+            </div>
+          )}
+        </div>
+      </SectionReveal>
+
+      <SectionReveal delay={100}>
+        <div className="rounded-2xl border border-dashed border-gray-600 bg-gray-800/80 p-8 text-center backdrop-blur-xl">
+          <i className="bi bi-lightbulb text-3xl text-yellow-400" />
+          <h3 className="mt-3 text-lg font-bold text-white">More Projects Coming Soon</h3>
+          <p className="mt-1 text-sm text-gray-400">
+            I'm always working on new ideas and experiments. Stay tuned!
+          </p>
+        </div>
+      </SectionReveal>
     </div>
   );
 };
