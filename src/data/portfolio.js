@@ -109,7 +109,7 @@ const portfolio = {
       description: 'A ride-hailing platform connecting drivers and passengers with seamless ride booking and tracking.',
       github: 'https://github.com/b-fame/ride-nation',
       demo: null,
-      tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],
+      tech: ['React', 'Node.js', 'Express', 'MySQL', 'Socket.io'],
       features: ['Real-time Tracking', 'Ride Matching', 'In-app Chat'],
       status: 'Private',
       image: '/images/project-ridenation.jpg',
