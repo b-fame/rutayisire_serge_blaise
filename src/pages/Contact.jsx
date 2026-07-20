@@ -48,15 +48,14 @@ const Contact = () => {
         });
         setFormData({ user_name: '', user_email: '', subject: '', message: '' });
       } else {
-        throw new Error('Failed to send');
+        const err = await response.json().catch(() => ({}));
+        throw new Error(err.error || 'Failed to send');
       }
     } catch (error) {
       console.error('Email sending failed:', error);
       setStatus({
         type: 'error',
-        message: window.location.hostname === 'localhost'
-          ? 'Run "npm run server" in a second terminal, then try again.'
-          : 'Oops! Something went wrong. Please try again or email me directly.',
+        message: error.message,
       });
     } finally {
       setIsLoading(false);
