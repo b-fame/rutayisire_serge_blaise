@@ -3,7 +3,9 @@ import portfolio from '../data/portfolio';
 import SectionReveal from '../components/SectionReveal';
 import SocialIcon from '../components/SocialIcon';
 
-const API_URL = process.env.REACT_APP_API_URL || '';
+const API_BASE = window.location.hostname === 'localhost'
+  ? 'http://localhost:4000'
+  : '';
 const WHATSAPP_PHONE = process.env.REACT_APP_WHATSAPP_PHONE;
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_PHONE}`;
 
@@ -28,7 +30,7 @@ const Contact = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      const response = await fetch(`${API_URL}/api/send-email`, {
+      const response = await fetch(`${API_BASE}/api/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -52,7 +54,9 @@ const Contact = () => {
       console.error('Email sending failed:', error);
       setStatus({
         type: 'error',
-        message: 'Oops! Something went wrong. Please try again or contact me directly via email.',
+        message: window.location.hostname === 'localhost'
+          ? 'Run "npm run server" in a second terminal, then try again.'
+          : 'Oops! Something went wrong. Please try again or email me directly.',
       });
     } finally {
       setIsLoading(false);
