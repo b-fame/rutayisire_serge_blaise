@@ -130,6 +130,19 @@ const portfolio = {
       iconColor: 'text-green-400',
       iconBg: 'from-green-500/20 to-emerald-500/20',
     },
+    {
+      title: 'CV Portfolio Website',
+      description: 'A modern, responsive portfolio website built with React and Tailwind CSS featuring dark/light theme, contact form, and project showcase.',
+      github: 'https://github.com/b-fame/rutayisire_serge_blaise',
+      demo: 'https://rutayisire-serge-blaise1.vercel.app/',
+      tech: ['React', 'React Router', 'Tailwind CSS', 'EmailJS'],
+      features: ['Dark/Light Theme', 'Responsive Design', 'Social Media Integration', 'Contact Form'],
+      status: 'Public',
+      image: null,
+      icon: 'bi-person-badge-fill',
+      iconColor: 'text-orange-400',
+      iconBg: 'from-orange-500/20 to-red-500/20',
+    },
   ],
 
   stats: [
