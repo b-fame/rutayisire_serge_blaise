@@ -3,7 +3,7 @@ import portfolio from '../data/portfolio';
 import SectionReveal from '../components/SectionReveal';
 import SocialIcon from '../components/SocialIcon';
 
-const FORMSPREE_ID = process.env.REACT_APP_FORMSPREE_ID || '';
+const API_URL = process.env.REACT_APP_API_URL || '';
 const WHATSAPP_PHONE = process.env.REACT_APP_WHATSAPP_PHONE;
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_PHONE}`;
 
@@ -28,7 +28,7 @@ const Contact = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const response = await fetch(`${API_URL}/api/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -36,7 +36,6 @@ const Contact = () => {
           email: formData.user_email,
           subject: formData.subject,
           message: formData.message,
-          _replyto: formData.user_email,
         }),
       });
 
@@ -154,13 +153,7 @@ const Contact = () => {
               </div>
             )}
 
-            {!FORMSPREE_ID ? (
-              <div className="rounded-xl border border-yellow-500/20 bg-yellow-500/10 p-6 text-center">
-                <i className="bi bi-gear-fill mb-3 text-3xl text-yellow-400" />
-                <p className="text-sm text-yellow-300">Contact form is being configured. Please email me directly or use WhatsApp.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
                     <label className="mb-1 block text-sm text-gray-400">Name</label>
@@ -228,7 +221,6 @@ const Contact = () => {
                   )}
                 </button>
               </form>
-            )}
           </div>
 
           <div className="space-y-4 md:col-span-2">
